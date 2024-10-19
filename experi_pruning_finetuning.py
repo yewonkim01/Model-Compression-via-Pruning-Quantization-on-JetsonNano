@@ -22,6 +22,7 @@ def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word=
 
     ignored_layers = []
 
+################# For checking mix pruning VS only linear pruning ################
     for m in model.modules():
         if word == 'prune_conv_and_linear':
             if isinstance(m, torch.nn.Linear) and m.out_features == 10:
@@ -33,6 +34,7 @@ def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word=
             if isinstance(m, torch.nn.Linear) and m.out_features == 10:
                 ignored_layers.append(m)
 
+##################################################################################
 
     iterative_steps = step
     pruner = tp.pruner.MagnitudePruner(
