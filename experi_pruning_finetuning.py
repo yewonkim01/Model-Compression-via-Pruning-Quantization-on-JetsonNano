@@ -11,30 +11,26 @@ import pandas as pd
 
 
 
-def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word):
+def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word='prune_conv_and_linear'):
     acc_list = []
     param_list = []
     mmac_list = []
     inference_time_list = []
 
-    #기존 pruning
+
     example_inputs = torch.randn(1, 1, 32, 32)
     example_inputs = example_inputs.to(device)
 
-    imp = tp.importance.MagnitudeImportance(p=2, group_reduction='mean')
+    imp = tp.importance.MagnitudeImportance(p=1, group_reduction='mean')
 
     ignored_layers = []
 
     for m in model.modules():
-        if word == 'except_last_linear_layer':
+        if word == 'prune_conv_and_linear':
             if isinstance(m, torch.nn.Linear) and m.out_features == 10:
                 ignored_layers.append(m)
 
-        if word == 'except_all_linear_layer':
-            if isinstance(m, torch.nn.Linear):
-                ignored_layers.append(m)
-
-        if word == 'except_all_conv_layer':
+        if word == 'only_prune_linear_layer':
             if isinstance(m, torch.nn.Conv2d):
                 ignored_layers.append(m)
             if isinstance(m, torch.nn.Linear) and m.out_features == 10:
