@@ -7,5 +7,4 @@ def quantize_qint8(net):
     ).to('cpu')
 
 
-
     return model_dynamic_quantized
