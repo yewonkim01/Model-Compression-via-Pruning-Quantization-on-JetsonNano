@@ -1,6 +1,7 @@
 import torch.nn as nn
 import torch.optim as optim
 
+
 def original_train(model, device, data):
     epochs = 5
     learning_rate = 1e-3
