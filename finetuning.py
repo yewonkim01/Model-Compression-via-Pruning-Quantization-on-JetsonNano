@@ -29,4 +29,5 @@ def fine_tuning(model, device, data, lr):
             #     print(f"idx {idx}, Runnning loss: {total_loss / len(train_loader)}")
         # print(f"epoch {e} : total_loss : {total_loss}")
 
+
     return model
