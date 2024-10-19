@@ -9,6 +9,8 @@ from test import test
 import pandas as pd
 
 
+
+
 def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word):
     acc_list = []
     param_list = []
