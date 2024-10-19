@@ -1,6 +1,3 @@
-import sys
-sys.path.append('/home/ywkim/anaconda3/lib/python3.10/site-packages')
-
 import torch
 import torch_pruning as tp
 from test import test
