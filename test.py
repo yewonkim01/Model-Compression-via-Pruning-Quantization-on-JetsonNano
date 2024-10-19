@@ -26,4 +26,5 @@ def test(model, device, data):
         acc = correct / total_samples * 100
         avg_time_per_sample = total_time / total_samples * 1e6
 
+    
     return acc, avg_time_per_sample
