@@ -24,9 +24,8 @@ def fine_tuning(model, device, data, lr, finetuning_epoch, re_initialize):
     elif re_initialize == 'he': #He
         re_initialize_weights(model, 'he')
 
-    else: # pruned parameters
+    else: # retain remaining parameters
         pass
-
     ###############################################################
 
 
