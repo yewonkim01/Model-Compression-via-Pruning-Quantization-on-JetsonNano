@@ -23,15 +23,30 @@ def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word=
     ignored_layers = []
 
 ################# For checking mix pruning VS only linear pruning ################
+
     for m in model.modules():
         if word == 'prune_conv_and_linear':
-            if isinstance(m, torch.nn.Linear) and m.out_features == 10:
+            if isinstance(m, torch.nn.Linear) and m.out_features == 10: # last linear layer
                 ignored_layers.append(m)
 
-        if word == 'only_prune_linear_layer':
+        elif word == 'prune_except_conv1':
+            if isinstance(m, torch.nn.Conv2d) and m.out_channels == 6:
+                ignored_layers.append(m)
+            if isinstance(m, torch.nn.Linear) and m.out_features == 10: # last linear layer
+                ignored_layers.append(m)
+
+        elif word == 'prune_only_linear1':
             if isinstance(m, torch.nn.Conv2d):
                 ignored_layers.append(m)
-            if isinstance(m, torch.nn.Linear) and m.out_features == 10:
+            if isinstance(m, torch.nn.Linear) and m.out_features == 84:
+                ignored_layers.append(m)
+            if isinstance(m, torch.nn.Linear) and m.out_features == 10: # last linear layer
+                ignored_layers.append(m)
+
+        elif word == 'only_prune_linear_layer':
+            if isinstance(m, torch.nn.Conv2d):
+                ignored_layers.append(m)
+            if isinstance(m, torch.nn.Linear) and m.out_features == 10: # last linear layer
                 ignored_layers.append(m)
 
 ##################################################################################
