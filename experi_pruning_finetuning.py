@@ -7,7 +7,6 @@ import pandas as pd
 
 
 
-
 def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word='prune_conv_and_linear', finetuning_epoch=5, re_initialize = False):
     acc_list = []
     param_list = []
