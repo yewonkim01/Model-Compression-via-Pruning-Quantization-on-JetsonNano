@@ -3,6 +3,7 @@ import torch_pruning as tp
 from test import test
 import pandas as pd
 
+
 def pruning(model, ratio, device, test_loader, step):
     example_inputs = torch.randn(1, 1, 32, 32)
     example_inputs = example_inputs.to(device)
