@@ -8,7 +8,7 @@ import pandas as pd
 
 
 
-def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word='prune_conv_and_linear'):
+def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word='prune_conv_and_linear', finetuning_epoch=5, re_initialize = False):
     acc_list = []
     param_list = []
     mmac_list = []
@@ -62,7 +62,7 @@ def experi_pruning_finetuning(model, ratio, device, test_loader, step, lr, word=
 
 
         # fine-tuning after pruning
-        model = fine_tuning(model, device, test_loader, lr)
+        model = fine_tuning(model, device, test_loader, lr, finetuning_epoch, re_initialize)
 
         acc, inference_time = test(model, device, test_loader)
         macs, nparams = tp.utils.count_ops_and_params(model, example_inputs)

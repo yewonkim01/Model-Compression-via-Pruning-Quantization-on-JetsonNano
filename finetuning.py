@@ -1,8 +1,36 @@
 import torch.nn as nn
 import torch.optim as optim
 
-def fine_tuning(model, device, data, lr):
-    epochs = 5
+def re_initialize_weights(model, method):
+    for layer in model.modules():
+        if isinstance(layer, nn.Conv2d) or isinstance(layer, nn.Linear):
+            if method == 'random':
+                nn.init.uniform_(layer.weight, -0.1, 0.1)
+                nn.init.uniform_(layer.bias, -0.1, 0.1)
+
+            elif method == 'he':
+                nn.init.kaiming_uniform_(layer.weight, nonlinearity='relu')
+                nn.init.zeros_(layer.bias)
+
+
+
+
+def fine_tuning(model, device, data, lr, finetuning_epoch, re_initialize):
+
+    ######### For checking initialization for finetuning ##########
+    if re_initialize == 'random': # random
+        re_initialize_weights(model, 'random')
+
+    elif re_initialize == 'he': #He
+        re_initialize_weights(model, 'he')
+
+    else: # pruned parameters
+        pass
+
+    ###############################################################
+
+
+    epochs = finetuning_epoch
     learning_rate = lr # smaller than 1e-3(original training lr)
     total_samples = 0
 
