@@ -5,5 +5,4 @@
 **This repository contains source code for model compression techniques on Jetson Nano, focusing on pruning and quantization.**
 
 ## Dataset
----
 - FashionMNIST
