@@ -14,3 +14,4 @@ Given the resource constraints of the Jetson Nano, the following dataset and mod
 - Pruning 
 - Quantization
 
+
