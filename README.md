@@ -17,4 +17,6 @@ Given the resource constraints of the Jetson Nano, the following dataset and mod
 
 ## Code
 ### Install dependencies
-`python -m pip install -r requirements.txt`
+```
+python -m pip install -r requirements.txt
+```
