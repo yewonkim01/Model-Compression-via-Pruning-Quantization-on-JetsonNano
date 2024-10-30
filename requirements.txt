@@ -1,0 +1,7 @@
+torch
+torchvision
+torchsummary
+torch_pruning
+matplotlib
+pandas
+numpy
