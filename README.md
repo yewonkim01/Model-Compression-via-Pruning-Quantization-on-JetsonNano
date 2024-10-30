@@ -10,3 +10,7 @@ Given the resource constraints of the Jetson Nano, the following dataset and mod
 - Model  : LeNet-5
 
 
+## Model Compression techniques
+- Pruning 
+- Quantization
+
