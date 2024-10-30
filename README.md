@@ -6,3 +6,6 @@
 
 ## Dataset
 - FashionMNIST
+
+## Model
+- LeNet-5
