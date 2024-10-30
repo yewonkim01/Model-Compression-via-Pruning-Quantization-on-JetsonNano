@@ -20,3 +20,6 @@ Given the resource constraints of the Jetson Nano, the following dataset and mod
 ```
 python -m pip install -r requirements.txt
 ```
+
+### Experimentation
+All experimental code can be found in `experiment.ipynb`. This notebook contains step-by-step implementations of pruning and quantization techniques on the selected model and dataset.
